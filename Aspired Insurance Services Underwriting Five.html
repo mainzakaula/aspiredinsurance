@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Aspired Insurance Services Underwriting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&amp;family=Inter:wght@400;500;600&amp;display=swap"
+      rel="stylesheet">
+    <style>
+  :root {
+    --ink: #12192B;
+    --ink-soft: #1D2438;
+    --paper: #F5F1E8;
+    --paper-dim: #EDE7D8;
+    --brass: #A9823F;
+    --brass-deep: #8A6A31;
+    --slate: #5B6472;
+    --hairline: #D8D2C2;
+    --hairline-dark: #333B52;
+    --text-on-ink: #EDE9DD;
+    --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg-page: var(--ink);
+      --text-page: var(--text-on-ink);
+    }
+  }
+  :root { --bg-page: var(--paper); --text-page: var(--ink); }
+  :root[data-theme="dark"] { --bg-page: var(--ink); --text-page: var(--text-on-ink); }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: env(safe-area-inset-top, 0px);
+  }
+  body {
+    background: var(--bg-page);
+    color: var(--text-page);
+    font-family: var(--sans);
+    line-height: 1.6;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  img, svg { max-width: 100%; display: block; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+  .overflow-scroll { overflow-x: auto; }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky; top: 0;
+    padding-top: env(safe-area-inset-top, 0px);
+    background: var(--bg-page);
+    border-bottom: 1px solid var(--hairline);
+    z-index: 50;
+  }
+  :root[data-theme="dark"] header,
+  :root:not([data-theme="light"]) header { border-bottom-color: var(--hairline-dark); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) header { border-bottom-color: var(--hairline-dark); }
+  }
+  nav.wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 76px;
+  }
+  .brand { display: flex; align-items: baseline; gap: 10px; font-family: var(--serif); font-weight: 600; font-size: 1.25rem; letter-spacing: -0.01em; }
+  .brand small { font-family: var(--sans); font-weight: 500; font-size: 0.68rem; color: var(--brass); letter-spacing: 0.04em; }
+  .navlinks { display: flex; gap: 36px; font-size: 0.92rem; }
+  .navlinks a { text-decoration: none; color: var(--slate); }
+  .navlinks a:hover { color: var(--brass-deep); }
+  .navcta {
+    border: 1px solid var(--brass); color: var(--brass-deep);
+    padding: 9px 18px; text-decoration: none; font-size: 0.88rem; font-weight: 500;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .navcta:hover { background: var(--brass); color: var(--paper); }
+  .menu-btn { display: none; background: none; border: 1px solid var(--hairline); padding: 8px 12px; font-size: 0.85rem; color: var(--text-page); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    border-bottom: 1px solid var(--hairline);
+    overflow: hidden;
+  }
+  .ledger-lines {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: repeating-linear-gradient(
+      to bottom, transparent, transparent 47px, var(--hairline) 47px, var(--hairline) 48px
+    );
+    opacity: 0.5;
+    mask-image: linear-gradient(to bottom, transparent, black 15%, black 80%, transparent);
+  }
+  .hero-inner {
+    position: relative;
+    padding: 88px 0 76px;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 48px;
+    align-items: end;
+  }
+  .ref-tag {
+    font-family: var(--serif); font-size: 0.85rem; color: var(--brass-deep);
+    letter-spacing: 0.02em; margin-bottom: 22px;
+  }
+  h1.headline {
+    font-family: var(--serif); font-weight: 500;
+    font-size: clamp(2.4rem, 5vw, 3.9rem);
+    line-height: 1.05; letter-spacing: -0.015em;
+    max-width: 14ch;
+  }
+  .hero-sub {
+    color: var(--slate); font-size: 1.08rem; max-width: 46ch; margin-top: 24px;
+  }
+  .hero-ctas { display: flex; gap: 16px; margin-top: 34px; }
+  .btn-primary {
+    background: var(--ink); color: var(--paper);
+    padding: 13px 26px; text-decoration: none; font-size: 0.92rem; font-weight: 500;
+    border: 1px solid var(--ink);
+  }
+  :root[data-theme="dark"] .btn-primary,
+  :root:not([data-theme="light"]) .btn-primary {
+    background: var(--brass); color: var(--ink); border-color: var(--brass);
+  }
+  @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .btn-primary { background: var(--ink); color: var(--paper); } }
+  .btn-secondary {
+    color: var(--text-page); padding: 13px 8px; text-decoration: none; font-size: 0.92rem;
+    border-bottom: 1px solid var(--hairline-dark);
+  }
+
+  .reference-card {
+    border: 1px solid var(--hairline);
+    padding: 26px 28px;
+    font-size: 0.85rem;
+  }
+  .reference-card dt { color: var(--slate); font-size: 0.75rem; margin-top: 14px; }
+  .reference-card dt:first-child { margin-top: 0; }
+  .reference-card dd { font-family: var(--serif); font-size: 1.15rem; margin-top: 2px; }
+
+  /* ---------- Section shared ---------- */
+  section { padding: 84px 0; border-bottom: 1px solid var(--hairline); }
+  :root[data-theme="dark"] section,
+  :root:not([data-theme="light"]) section { border-bottom-color: var(--hairline-dark); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) section { border-bottom-color: var(--hairline-dark); } }
+  section:last-of-type { border-bottom: none; }
+  .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; margin-bottom: 48px; }
+  h2.section-title { font-family: var(--serif); font-weight: 500; font-size: clamp(1.7rem, 3vw, 2.3rem); max-width: 16ch; }
+  .section-note { color: var(--slate); font-size: 0.95rem; max-width: 34ch; }
+
+  /* ---------- Lines of business (ledger list) ---------- */
+  .ledger { border-top: 1px solid var(--hairline); }
+  :root[data-theme="dark"] .ledger, :root:not([data-theme="light"]) .ledger { border-top-color: var(--hairline-dark); }
+  .ledger-row {
+    display: grid; grid-template-columns: 40px 1fr 1fr auto; gap: 24px; align-items: center;
+    padding: 22px 0; border-bottom: 1px solid var(--hairline);
+  }
+  :root[data-theme="dark"] .ledger-row, :root:not([data-theme="light"]) .ledger-row { border-bottom-color: var(--hairline-dark); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ledger-row { border-bottom-color: var(--hairline-dark); } }
+  .ledger-code { font-family: var(--serif); color: var(--brass-deep); font-size: 0.9rem; }
+  .ledger-name { font-weight: 600; font-size: 1.02rem; }
+  .ledger-desc { color: var(--slate); font-size: 0.9rem; }
+  .ledger-limit { font-size: 0.85rem; color: var(--slate); text-align: right; white-space: nowrap; }
+
+  /* ---------- Process ---------- */
+  .process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .process-step { border-left: 1px solid var(--hairline); padding: 0 24px; }
+  :root[data-theme="dark"] .process-step, :root:not([data-theme="light"]) .process-step { border-left-color: var(--hairline-dark); }
+  .process-step:first-child { border-left: none; padding-left: 0; }
+  .process-num { font-family: var(--serif); color: var(--brass); font-size: 1.4rem; }
+  .process-title { font-weight: 600; margin-top: 14px; font-size: 1.02rem; }
+  .process-desc { color: var(--slate); font-size: 0.9rem; margin-top: 8px; }
+
+  /* ---------- Why us ---------- */
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 56px; }
+  .why-item { border-top: 1px solid var(--hairline); padding-top: 18px; }
+  :root[data-theme="dark"] .why-item, :root:not([data-theme="light"]) .why-item { border-top-color: var(--hairline-dark); }
+  .why-item h3 { font-family: var(--serif); font-weight: 500; font-size: 1.15rem; }
+  .why-item p { color: var(--slate); font-size: 0.92rem; margin-top: 8px; }
+
+  /* ---------- Contact ---------- */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+  .field { margin-bottom: 18px; }
+  .field label { display: block; font-size: 0.8rem; color: var(--slate); margin-bottom: 6px; }
+  .field input, .field select, .field textarea {
+    width: 100%; background: transparent; color: var(--text-page);
+    border: 1px solid var(--hairline); padding: 11px 12px; font-family: var(--sans); font-size: 0.92rem;
+  }
+  :root[data-theme="dark"] .field input, :root:not([data-theme="light"]) .field input,
+  :root[data-theme="dark"] .field select, :root:not([data-theme="light"]) .field select,
+  :root[data-theme="dark"] .field textarea, :root:not([data-theme="light"]) .field textarea { border-color: var(--hairline-dark); }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--brass); outline-offset: 1px; }
+  .contact-info dt { font-size: 0.78rem; color: var(--slate); margin-top: 20px; }
+  .contact-info dt:first-child { margin-top: 0; }
+  .contact-info dd { font-family: var(--serif); font-size: 1.1rem; margin-top: 3px; }
+
+  footer { padding: 32px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--slate); }
+
+  @media (max-width: 860px) {
+    .navlinks { display: none; }
+    .menu-btn { display: inline-block; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .process { grid-template-columns: 1fr 1fr; row-gap: 32px; }
+    .process-step:nth-child(3) { border-left: none; padding-left: 0; }
+    .why-grid, .contact-grid { grid-template-columns: 1fr; }
+    .ledger-row { grid-template-columns: 1fr; gap: 6px; }
+    .ledger-limit { text-align: left; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style> </head>
+  <body>
+    <header>
+      <nav class="wrap">
+        <div class="brand">Aspired Insurance Services <small>UNDERWRITING</small></div>
+        <div class="navlinks"> <a href="#lines">Lines of Business</a> <a href="#process">Process</a>
+          <a href="#why">Why Us</a> <a href="#contact">Contact</a> </div>
+        <a class="navcta" href="#contact">Submit a Risk</a> </nav>
+    </header>
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div>
+          <div class="ref-tag">Registered with PIA — Est. 2026</div>
+          <h1 class="headline">Specialty risk, underwritten with judgment.</h1>
+          <p class="hero-sub">Aspired Insurance Services assesses and binds
+            cover on behalf of A-rated capacity partners across property,
+            casualty, and professional lines — for brokers and clients who need
+            a decision, not a queue.</p>
+          <div class="hero-ctas"> <a class="btn-primary" href="#contact">Submit
+              a Risk</a> <a class="btn-secondary" href="#lines">View Lines of
+              Business</a> </div>
+        </div>
+        <dl class="reference-card">
+          <dt>Capacity backing</dt>
+          <dd>A– to A+ rated carriers</dd>
+          <dt>Typical quote turnaround</dt>
+          <dd>24 Hours</dd>
+          <dt>Gross written premium, 2026</dt>
+          <dd>K100 M</dd>
+        </dl>
+      </div>
+    </section>
+    <section id="lines">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="section-title">Lines of business</h2>
+          <p class="section-note">Delegated authority across four core lines,
+            each underwritten by a dedicated team.</p>
+        </div>
+        <div class="overflow-scroll">
+          <div class="ledger" style="min-width: 620px;">
+            <div class="ledger-row">
+              <div class="ledger-code">PR</div>
+              <div class="ledger-name">Commercial Property</div>
+              <div class="ledger-desc">Primary &amp; excess, single-site to
+                multi-location schedules</div>
+              <div class="ledger-limit">Limits to ZMK50M</div>
+            </div>
+            <div class="ledger-row">
+              <div class="ledger-code">CA</div>
+              <div class="ledger-name">General &amp; Products Casualty</div>
+              <div class="ledger-desc">Manufacturing, distribution, and
+                contracting risk</div>
+              <div class="ledger-limit">Limits to ZMK25M</div>
+            </div>
+            <div class="ledger-row">
+              <div class="ledger-code">PI</div>
+              <div class="ledger-name">Professional Indemnity</div>
+              <div class="ledger-desc">Tech E&amp;O, miscellaneous professional,
+                cyber-adjacent</div>
+              <div class="ledger-limit">Limits to ZMK15M</div>
+            </div>
+            <div class="ledger-row">
+              <div class="ledger-code">MA</div>
+              <div class="ledger-name">Marine Cargo</div>
+              <div class="ledger-desc">Stock throughput and annual cargo
+                programs</div>
+              <div class="ledger-limit">Limits to ZMK20M</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="process">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="section-title">How a submission moves</h2>
+          <p class="section-note">Four steps, the same order, every time.</p>
+        </div>
+        <div class="process">
+          <div class="process-step">
+            <div class="process-num">01</div>
+            <div class="process-title">Submission</div>
+            <p class="process-desc">Client submits risk detail and loss history
+              through the portal or an underwriter direct.</p>
+          </div>
+          <div class="process-step">
+            <div class="process-num">02</div>
+            <div class="process-title">Risk assessment</div>
+            <p class="process-desc">An underwriter reviews exposure, engineering
+              reports, and prior claims against our appetite.</p>
+          </div>
+          <div class="process-step">
+            <div class="process-num">03</div>
+            <div class="process-title">Terms issued</div>
+            <p class="process-desc">Pricing, conditions, and any subjectivities
+              are returned with a firm quote validity period.</p>
+          </div>
+          <div class="process-step">
+            <div class="process-num">04</div>
+            <div class="process-title">Bind &amp; issue</div>
+            <p class="process-desc">Cover binds on our capacity paper; policy
+              documents issue within 48 hours.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="why">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="section-title">Why brokers place with us</h2>
+        </div>
+        <div class="why-grid">
+          <div class="why-item">
+            <h3>Underwriters, not algorithms</h3>
+            <p>Every submission outside binder authority is read by a named
+              underwriter who owns the file end to end.</p>
+          </div>
+          <div class="why-item">
+            <h3>Stable capacity</h3>
+            <p>Multi-year paper agreements mean appetite doesn't shift
+              mid-treaty year.</p>
+          </div>
+          <div class="why-item">
+            <h3>Claims handled in-house</h3>
+            <p>The team that priced the risk is reachable when a claim comes in
+              — no third-party TPA handoff.</p>
+          </div>
+          <div class="why-item">
+            <h3>Straight answers on declines</h3>
+            <p>When we can't write a risk, we say why, in writing, so the next
+              submission is a better fit.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="section-title">Submit a risk</h2>
+        </div>
+        <div class="contact-grid">
+          <form>
+            <div class="field">&nbsp; <label for="broker">Client name</label> <input
+                id="broker" placeholder="Firm name" type="text"> </div>
+            <div class="field"> <label for="line">Line of business</label>
+              <select id="line">
+                <option>Commercial Property</option>
+                <option>General &amp; Products Casualty</option>
+                <option>Professional Indemnity</option>
+                <option>Marine Cargo</option>
+              </select>
+            </div>
+            <div class="field"> <label for="detail">Risk summary</label> <textarea
+id="detail" rows="4" placeholder="Occupancy, TIV, requested limit, loss history"></textarea>
+            </div>
+            <a class="btn-primary" href="#" onclick="return false;">Send
+              Submission</a> </form>
+          <dl class="contact-info">
+            <dt style="height: 24px; margin-top: 14px;">Underwriting inbox</dt>
+            <dd>submissions@aspiredinsurance.co.zm</dd>
+            <dt>New business line</dt>
+            <dd>+260966365192 +260967752369</dd>
+            <dt>Office</dt>
+            <dd>kariba Road,Riverside Kitwe</dd>
+            <dt>Hours</dt>
+            <dd>Mon–Fri, 8:00–18:00 CAT</dd>
+            <dt>
+              <p>How would you like us to contact you?</p>
+              <label> <input name="contact_method" value="email" type="radio">
+                Email </label> <label> <input name="contact_method" value="whatsapp"
+                  type="radio"> WhatsApp </label></dt>
+          </dl>
+          <!-- WhatsApp Button Begins -->
+          <div id="whatsapp-button" style="position: fixed; bottom: 20px; left: 20px; z-index: 1000;">
+            <a aria-label="Chat on WhatsApp" href="https://wa.me/260955543543">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+                alt="WhatsApp" style="width: 50px; height: 50px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); transition: transform 0.3s ease;"
+                onmouseover="this.style.transform='scale(1.1)';" onmouseout="this.style.transform='scale(1)';">
+            </a><a>
+              <!-- WhatsApp Button Ends --> </a></div>
+          <a> </a></div>
+        <a> </a></div>
+    </section>
+    <a>
+      <footer>
+        <div class="wrap footer-inner"> <span>© 2026 Aspired Insurance Services
+            Underwriting Ltd.</span> <span>Authorized &amp; regulated as a
+            Managing General Agent</span> </div>
+      </footer>
+    </a>
+  </body>
+</html>
